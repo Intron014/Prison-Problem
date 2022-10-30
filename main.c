@@ -3,10 +3,13 @@
 #include <time.h>
 
 int main() {
-    int pos1, pos2, pos3, value, oldvalue, reboots=0;
+    int pos1, pos2, pos3, value, runs=1, oldvalue, reboots=0;
     int box[101];
     srand(time(NULL));
-    for(pos3=0;pos3<=2;pos3++) {
+    /*printf("How many time do you wish to run it?: ");
+    fflush(stdin);
+    scanf("%i", &runs);*/
+    for(pos3=0;pos3<runs;pos3++) {
         reboot:
         //Asignar números a las cajas
         box[0] = 0;
@@ -27,7 +30,7 @@ int main() {
         for (pos1 = 1, pos2 = 0; pos1 < 100; pos1++, pos2 = 0) {
             // pos1: Indica la posición en el array (personas); pos2: El número de cajas abiertas*/
             value = pos1;
-            printf("\n----\nPersona: %i\n----\n", value);
+            printf("----\nPersona: %i\n----\n", value);
             do {
                 oldvalue = value;
                 value = box[value];
@@ -36,11 +39,12 @@ int main() {
             } while (value != pos1 && pos2 <= 50);
             printf("Opened Boxes: %i\n", pos2);
             if (pos2 >= 51) {
-                printf("OOPS...");
                 reboots++;
                 goto reboot;
             }
         }
-        printf("Done!\n-----\nReboots: %i\n", reboots);
+
     }
+    printf("Done!\n-----\nRuns: %i\nReboots: %i\n", pos3, reboots);
+    getchar();
 }
