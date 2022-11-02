@@ -35,7 +35,12 @@ int main() {
                 oldvalue = value;
                 value = box[value];
                 pos2++;
-                printf("Box: %i - Number: %i\n", oldvalue, value);
+                if(oldvalue<10) {
+                    printf("Box: 0%i - Number: %i\n", oldvalue, value);
+                }
+                else {
+                    printf("Box: %i - Number: %i\n", oldvalue, value);
+                }
             } while (value != pos1 && pos2 <= 50);
             printf("Opened Boxes: %i\n", pos2);
             if (pos2 >= 51) {
